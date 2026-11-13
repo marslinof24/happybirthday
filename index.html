@@ -1,0 +1,584 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#171c1a" />
+  <title>Happy Birthday, LJT!</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;800;900&display=swap');
+
+    :root {
+      --bg: #171c1a;
+      --surface: #222a26;
+      --line: #3b4840;
+      --accent: #b3c5aa;
+      --white: #f0f2eb;
+      --muted: #929e95;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'DM Sans', 'Noto Sans TC', sans-serif;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(179,197,170,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(179,197,170,.035) 1px, transparent 1px);
+      background-size: 64px 64px;
+      z-index: -1;
+    }
+
+    .container {
+      width: min(1100px, 88%);
+      margin: auto;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 3px;
+    }
+
+    .nav-tag {
+      color: var(--accent);
+      font-size: 11px;
+      letter-spacing: 3px;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 650px;
+      padding: 115px 0 90px;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      margin-bottom: 30px;
+    }
+
+    .eyebrow::before {
+      content: '';
+      width: 34px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    h1 {
+      font-size: clamp(65px, 10vw, 140px);
+      font-weight: 800;
+      letter-spacing: -6px;
+      line-height: .95;
+    }
+
+    h1 span {
+      color: var(--accent);
+    }
+
+    .hero-chinese {
+      font-size: clamp(22px, 3.5vw, 38px);
+      font-weight: 700;
+      letter-spacing: 5px;
+      margin-top: 36px;
+    }
+
+    .hero-desc {
+      max-width: 500px;
+      margin-top: 25px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 2.2;
+    }
+
+    .hero-number {
+      position: absolute;
+      right: -35px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: clamp(160px, 28vw, 360px);
+      font-weight: 800;
+      color: rgba(179,197,170,.045);
+      letter-spacing: -25px;
+      pointer-events: none;
+    }
+
+    .line-divider {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 3px;
+      padding: 20px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .line-divider span {
+      flex: 1;
+      height: 1px;
+      background: var(--line);
+    }
+
+    .sports {
+      padding: 110px 0;
+    }
+
+    .section-label {
+      color: var(--accent);
+      font-size: 12px;
+      letter-spacing: 4px;
+      margin-bottom: 18px;
+    }
+
+    .section-title {
+      font-size: clamp(30px, 5vw, 56px);
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 45px;
+    }
+
+    .sport-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .sport-card {
+      position: relative;
+      background: var(--surface);
+      min-height: 350px;
+      padding: 40px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      transition: transform .4s, border-color .4s;
+    }
+
+    .sport-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--accent);
+    }
+
+    .sport-index {
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 3px;
+    }
+
+    .sport-icon {
+      width: 110px;
+      height: 110px;
+      margin: 35px 0 25px;
+      color: var(--accent);
+    }
+
+    .sport-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .sport-card h3 {
+      font-size: 27px;
+      font-weight: 800;
+    }
+
+    .sport-card p {
+      color: var(--muted);
+      margin-top: 13px;
+      font-size: 13px;
+      line-height: 2;
+    }
+
+    .sport-bg {
+      position: absolute;
+      right: -25px;
+      bottom: -45px;
+      font-size: 160px;
+      font-weight: 800;
+      color: rgba(179,197,170,.045);
+    }
+
+    .message {
+      background: var(--accent);
+      color: var(--bg);
+      padding: 95px 20px;
+      text-align: center;
+    }
+
+    .message-label {
+      font-size: 12px;
+      letter-spacing: 5px;
+      font-weight: 800;
+      opacity: .65;
+    }
+
+    .message h2 {
+      font-size: clamp(35px, 6vw, 70px);
+      margin: 25px 0;
+      font-weight: 900;
+    }
+
+    .message p {
+      max-width: 620px;
+      margin: 0 auto;
+      line-height: 2.6;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .recovery {
+      padding: 100px 0;
+      text-align: center;
+    }
+
+    .recovery .mini {
+      color: var(--accent);
+      letter-spacing: 4px;
+      font-size: 12px;
+      margin-bottom: 25px;
+    }
+
+    .recovery h2 {
+      font-size: clamp(28px, 5vw, 50px);
+      line-height: 1.6;
+    }
+
+    .recovery h2 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .recovery p {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 22px auto 38px;
+      line-height: 2.2;
+    }
+
+    .wish-button {
+      background: var(--accent);
+      color: var(--bg);
+      border: none;
+      padding: 18px 35px;
+      font: inherit;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: background .3s, transform .3s;
+    }
+
+    .wish-button:hover {
+      background: var(--white);
+      transform: translateY(-3px);
+    }
+
+    #wish-output {
+      min-height: 35px;
+      color: var(--accent);
+      margin-top: 28px;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 2;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 30px 0;
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 2px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .9s ease, transform .9s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .confetti {
+      position: fixed;
+      top: -20px;
+      width: 7px;
+      height: 13px;
+      z-index: 50;
+      pointer-events: none;
+      animation: fall linear forwards;
+    }
+
+    @keyframes fall {
+      from { transform: translateY(0) rotate(0deg); opacity: 1; }
+      to { transform: translateY(110vh) rotate(800deg); opacity: 0; }
+    }
+
+    @media (max-width: 700px) {
+      .hero {
+        min-height: 550px;
+        padding: 90px 0;
+      }
+
+      h1 {
+        letter-spacing: -3px;
+      }
+
+      .hero-number {
+        right: 0;
+        top: 65%;
+        font-size: 190px;
+      }
+
+      .sport-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .sports {
+        padding: 75px 0;
+      }
+
+      .sport-card {
+        min-height: 310px;
+      }
+
+      .message {
+        padding: 75px 25px;
+      }
+
+      .message p {
+        font-size: 14px;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <div class="logo">LJT<span style="color:var(--accent)">.</span></div>
+      <div class="nav-tag">BIRTHDAY EDITION</div>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-number">LJT</div>
+      <div class="hero-content reveal">
+        <div class="eyebrow">TO THE MAN WHO NEVER STOPS</div>
+        <h1>HAPPY<br><span>BIRTHDAY.</span></h1>
+        <div class="hero-chinese">老爸，生日快樂！</div>
+        <p class="hero-desc">
+          致最熱愛運動的老爸 LJT。<br>
+          人生就像一場長跑，也像一場精彩的羽球賽。<br>
+          願你永遠保有熱情，享受每一段旅程。
+        </p>
+      </div>
+    </section>
+
+    <div class="line-divider">
+      <span></span>
+      KEEP MOVING · KEEP SMILING · KEEP STRONG
+      <span></span>
+    </div>
+
+    <section class="sports">
+      <div class="section-label reveal">01 / THE PASSION</div>
+      <h2 class="section-title reveal">熱愛的事，永不停止。</h2>
+
+      <div class="sport-grid">
+        <div class="sport-card reveal">
+          <div class="sport-index">SPORT 001 / BADMINTON</div>
+          <div class="sport-icon">
+            <svg viewBox="0 0 120 120" fill="none"
+              stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round"
+              aria-label="羽球拍">
+              <ellipse cx="43" cy="39" rx="26" ry="34" transform="rotate(-35 43 39)"/>
+              <path d="M60 65L105 111M67 58L112 104"/>
+              <path d="M23 12L65 65M13 27L51 74M36 7L72 51M49 8L78 40"/>
+              <path d="M15 29L58 12M15 44L70 28M22 59L77 43"/>
+              <path d="M93 99L101 91M98 104L106 96"/>
+            </svg>
+          </div>
+          <h3>羽球 / BADMINTON</h3>
+          <p>每一次揮拍，都是對熱愛的堅持。<br>期待你再次在球場上自在奔跑、漂亮殺球！</p>
+          <div class="sport-bg">01</div>
+        </div>
+
+        <div class="sport-card reveal">
+          <div class="sport-index">SPORT 002 / RUNNING</div>
+          <div class="sport-icon">
+            <svg viewBox="0 0 120 120" fill="none"
+              stroke="currentColor" stroke-width="3"
+              stroke-linecap="round" stroke-linejoin="round"
+              aria-label="跑步的人">
+              <circle cx="76" cy="17" r="9"/>
+              <path d="M60 38L47 56L66 70L52 100"/>
+              <path d="M60 38L82 50L102 47"/>
+              <path d="M60 38L42 34L27 48"/>
+              <path d="M66 70L88 80L101 102"/>
+              <path d="M19 105H43M7 92H30M11 78H27"/>
+            </svg>
+          </div>
+          <h3>跑步 / RUNNING</h3>
+          <p>不必追求最快的速度。<br>健康地跑、開心地跑，才能跑得更遠。</p>
+          <div class="sport-bg">02</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section class="message">
+    <div class="message-label reveal">A MESSAGE FOR YOU</div>
+    <h2 class="reveal">生日快樂，老爸。</h2>
+    <p class="reveal">
+      希望新的一歲，你依然充滿活力與笑容。<br>
+      但也別忘了，偶爾放慢腳步、好好休息。<br><br>
+      最重要的是，希望你的腳趕快好起來，<br>
+      不再被疼痛困擾，能夠安心地跑步、盡情地打羽球。<br><br>
+      比起任何成績或紀錄，<br>
+      你的健康和快樂，才是最重要的。<br>
+      願你平安、健康，每一天都過得精彩！
+    </p>
+  </section>
+
+  <section class="recovery container">
+    <div class="mini reveal">THE NEXT CHAPTER</div>
+    <h2 class="reveal">
+      暫時的休息，<br>
+      是為了<em>更精彩的下一場。</em>
+    </h2>
+    <p class="reveal">
+      腳要快快康復，運動也別太勉強。<br>
+      等身體準備好了，再一起迎接更多精彩的挑戰！
+    </p>
+    <button class="wish-button reveal" id="wish-button" type="button">
+      點擊接收生日祝福 ↗
+    </button>
+    <div id="wish-output" role="status" aria-live="polite"></div>
+  </section>
+
+  <div class="container">
+    <footer>
+      <div>MADE WITH LOVE, FOR LJT.</div>
+      <div>HAPPY BIRTHDAY · STAY HEALTHY</div>
+    </footer>
+  </div>
+
+  <script>
+    const revealElements = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    revealElements.forEach(element => observer.observe(element));
+
+    const button = document.getElementById('wish-button');
+    const output = document.getElementById('wish-output');
+
+    const wishes = [
+      '🎂 生日快樂！願老爸健康、平安、天天開心！',
+      '🏸 祝你早日康復，重返最喜歡的羽球場！',
+      '🏃 願未來的每一步，都走得健康又自在！',
+      '💚 好好照顧自己，我們還有好多精彩日子要一起過！'
+    ];
+
+    let wishIndex = 0;
+
+    button.addEventListener('click', () => {
+      output.textContent = wishes[wishIndex % wishes.length];
+      wishIndex++;
+      celebrate();
+    });
+
+    function celebrate() {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        return;
+      }
+
+      const colors = ['#b3c5aa', '#f0f2eb', '#788d7e', '#c0b8a4'];
+
+      for (let i = 0; i < 65; i++) {
+        const piece = document.createElement('div');
+        piece.className = 'confetti';
+
+        piece.style.left = Math.random() * 100 + 'vw';
+        piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+        piece.style.animationDuration = (2.5 + Math.random() * 2) + 's';
+        piece.style.animationDelay = Math.random() * 0.8 + 's';
+        piece.style.opacity = Math.random() * 0.5 + 0.5;
+
+        document.body.appendChild(piece);
+
+        piece.addEventListener('animationend', () => piece.remove());
+      }
+    }
+  </script>
+</body>
+</html>
